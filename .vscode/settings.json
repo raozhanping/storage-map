@@ -1,0 +1,15 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "vscode.typescript-language-features",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "[jsonc]": {
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.suggest.insertMode": "replace"
+  },
+  "[javascript]": {}
+}

@@ -1,0 +1,88 @@
+{
+  "name": "storage-map",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./lib/index.js",
+  "scripts": {
+    "start": "",
+    "build": "yarn clean && tsc",
+    "watch": "yarn build -- --watch",
+    "clean": "rimraf lib",
+    "lint": "eslint src --ext ts --format stylish",
+    "fix": "yarn lint -- --fix",
+    "test": "jest",
+    "prepublish": "yarn build",
+    "commit": "git-cz"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "eslint .",
+      "commit-msg": "commitlint -e $GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "babel-eslint": "^10.1.0",
+    "commitizen": "^4.1.2",
+    "cz-conventional-changelog": "^3.2.0",
+    "@types/jest": "^25.2.3",
+    "@types/node": "^13.13.4",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "fs-extra": "^8.1.0",
+    "jest": "^25.5.4",
+    "jest-runner-eslint": "^0.7.6",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^25.5.1",
+    "typescript": "^3.9.2",
+    "husky": "^4.2.5",
+    "prettier": "^2.0.5"
+  },
+  "engines": {
+    "node": ">=8.9.0"
+  },
+  "jest": {
+    "projects": [
+      {
+        "displayName": "test",
+        "roots": [
+          "src"
+        ],
+        "preset": "ts-jest"
+      },
+      {
+        "displayName": "lint",
+        "runner": "jest-runner-eslint",
+        "moduleFileExtensions": [
+          "ts"
+        ],
+        "testMatch": [
+          "<rootDir>/src/**/*.ts"
+        ]
+      }
+    ]
+  },
+  "prettier": {
+    "printWidth": 80,
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "useTabs": false,
+    "bracketSpacing": true,
+    "insertPragma": false,
+    "arrowParens": "avoid",
+    "htmlWhitespaceSensitivity": "css",
+    "endOfLine": "lf"
+  }
+}
