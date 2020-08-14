@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "main": "./lib/index.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "start": "",
     "build": "yarn clean && tsc",
