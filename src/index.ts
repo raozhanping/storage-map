@@ -1,4 +1,4 @@
-import { LocalStorage, SessionStorage } from './WindowStorage'
+import { LocalStorage, SessionStorage } from './WebStorage'
 
 /**
  * Storage factory

@@ -1,34 +1,30 @@
 import StorageMap from './StorageMap'
+import StorageMock from './StorageMock'
 
 /**
  * @class WindowStorage
  * @param store {window.localStorage | window.sessionStorage} 存储卷
  */
-export default class WindowStorage extends StorageMap {
+export default class WebStorage extends StorageMap<[string, any]> {
   protected store: Storage
   constructor(store: Storage) {
     super()
-    if (!store) {
-      throw new TypeError(`WindowStorage: Arguments 'store' is required.`)
-    }
     this.store = store
   }
   get size() {
     return this.store.length
   }
-  *entries() {
+  *entries(): Iterator<[string, any]> {
     let index = 0
-    const entries = <Array<[string, any]>>[]
     while (index < this.store.length) {
       const key = this.store.key(index++)
       if (key != undefined) {
         const value = this.get(key)
-        entries.push([key, value])
+        yield [key, value]
       }
     }
-    return entries
   }
-  set(key: string, value: any) {
+  set(key: string, value?: any) {
     value = this.serialize(value)
     if (value) {
       this.store.setItem(key, value)
@@ -41,7 +37,7 @@ export default class WindowStorage extends StorageMap {
     return result ? this.deserialize(result) : result
   }
   has(key: string): boolean {
-    return this.keys().includes(key)
+    return Array.from(this.keys()).includes(key)
   }
   delete(key: string) {
     return this.store.removeItem(key)
@@ -51,28 +47,36 @@ export default class WindowStorage extends StorageMap {
   }
   forEach(callback: Function) {
     for (const item of this) {
-      callback(item[1], item[0], this.store)
+      callback(item[1], item[0], this)
     }
   }
-  keys() {
-    const keys = <Array<string>>[]
-    this.forEach((value: any, key: string) => keys.push(key))
-    return keys
+  *keys(): IterableIterator<string> {
+    for (const item of this) {
+      yield item[0]
+    }
   }
-  values() {
-    const values = <Array<string>>[]
-    this.forEach((value: any) => values.push(value))
-    return values
+  *values(): IterableIterator<any> {
+    for (const item of this) {
+      yield item[1]
+    }
   }
 }
 
-export class LocalStorage extends WindowStorage {
+export class LocalStorage extends WebStorage {
   constructor() {
-    super(window.localStorage)
+    const storage = (window && window.localStorage) || new StorageMock()
+    super(storage)
+  }
+  get [Symbol.toStringTag]() {
+    return 'LocalStorage'
   }
 }
-export class SessionStorage extends WindowStorage {
+export class SessionStorage extends WebStorage {
   constructor() {
-    super(window.sessionStorage)
+    const storage = (window && window.sessionStorage) || new StorageMock()
+    super(storage)
+  }
+  get [Symbol.toStringTag]() {
+    return 'SessionStorage'
   }
 }

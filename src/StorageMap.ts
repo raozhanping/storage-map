@@ -4,22 +4,19 @@
  * @abstract
  * @method Symbol.iterator()
  */
-export default abstract class StorageMap {
+export default abstract class StorageMap<T> implements Iterable<T> {
   abstract size: number
   abstract clear(): void
   abstract delete(key: string): void
-  abstract entries(): Iterator<[string, any]>
+  abstract entries(): Iterator<T>
   abstract forEach(callback: Function): void
   abstract get(key: string): any
   abstract has(key: string): boolean
-  abstract keys(): Array<string>
+  abstract keys(): Iterator<string>
   abstract set(key: string, value: any): void
-  abstract values(): Array<any>
+  abstract values(): Iterator<any>
   get [Symbol.toStringTag]() {
-    return '[object StorageMap]'
-  }
-  get [Symbol.species]() {
-    return Map
+    return 'StorageMap'
   }
   [Symbol.iterator]() {
     return this.entries()

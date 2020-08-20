@@ -6,3 +6,6 @@ yarn-error.log*
 dist
 lib
 .idea
+
+# jest coverage
+coverage
