@@ -1,6 +1,24 @@
 {
   "name": "@ricann/storage-map",
   "version": "0.0.1",
+  "description": "Use map structure to operate LocalStorage, SessionStorage, IndexDB and WebSQL",
+  "keywords": [
+    "localStorage",
+    "sessionStorage",
+    "indexDB",
+    "storage",
+    "Map"
+  ],
+  "homepage": "https://github.com/raozhanping/storage-map#readme",
+  "bugs": {
+    "url": "https://github.com/raozhanping/storage-map/issues"
+  },
+  "license": "MIT",
+  "author": "raozhanping <raozhanping@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raozhanping/storage-map.git"
+  },
   "main": "./lib/index.js",
   "module": "./lib/index.esm.js",
   "files": [
