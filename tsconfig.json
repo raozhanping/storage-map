@@ -1,8 +1,13 @@
 {
   "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "types",
+    "module": "esnext",
+    "target": "ES2015",
     "outDir": "lib",
-    "target": "es2015",
-    "module": "CommonJS",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
     "removeComments": true,
     "allowJs": false,
     "strict": true,
@@ -13,5 +18,10 @@
   },
   "include": [
     "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "src/**/*.spec.ts"
   ]
 }
