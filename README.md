@@ -12,7 +12,7 @@ yarn build
 # test unit
 yarn run test
 # test unit with covarage
-yarn run test --covarage
+yarn run test -- --covarage
 
 # submit git log with conventional style
 yarn commit
