@@ -1,6 +1,6 @@
 {
   "name": "@ricann/storage-map",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Use map structure to operate LocalStorage, SessionStorage, IndexDB and WebSQL",
   "keywords": [
     "localStorage",

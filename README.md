@@ -1,4 +1,8 @@
 # storage-map
+
+[![builds][builds]][builds-url]
+[![licenses][licenses]][licenses-url]
+
   Use map structure to operate LocalStorage, SessionStorage, IndexDB and WebSQL.
 
 ## Usage
@@ -49,3 +53,8 @@ yarn run test -- --covarage
 # submit git log with conventional style
 yarn commit
 ```
+
+[builds]:https://api.travis-ci.org/raozhanping/storage-map.svg?branch=master
+[builds-url]:https://travis-ci.org/github/raozhanping/storage-map
+[licenses]:https://app.fossa.com/api/projects/git%2Bgithub.com%2Fraozhanping%2Fstorage-map.svg?type=shield
+[licenses-url]:https://app.fossa.com/projects/git%2Bgithub.com%2Fraozhanping%2Fstorage-map?ref=badge_shield
