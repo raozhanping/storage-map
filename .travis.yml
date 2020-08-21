@@ -1,12 +1,17 @@
 git:
   depth: 10
 language: node_js
-
 cache: yarn
-
 node_js:
-  - '10'
-  - '12'
-
+  - "12"
 script:
-  - yarn test-ci
+  - yarn test && yarn build
+deploy:
+  provider: npm
+  email: $EMAIL
+  api_key:
+    secure: ZNhgXf64sZOd7obhXe4PV09/HhyoiYrsgngSj/CDWw4EFA7k0vL2Y3W4H8KOcjliNfV/QFdYj5OkKuxFresMa17iHKoHLcRnz9WxyUOU+YETCj6cg2uD+JimSl8wNPphPPrKUiYfhzmPs9VJIm9RVlDH9deWGWPXDSL4E8CLh5n6VAXFqne182fogUCyewAOwIB3lpU9Q7sDBJUKkMGfM7J/Hj0Kv1Moomp/MCkNK/yYbfj1yWL682Kv9SciCxoJzpuUO3hdD85H1pRGa/GomWCVBVSOp+RYoI/owQc9dCuxSkjmrVOInUlE+/spRG8MAORBfh6GhP819XXN/MCsmKMxgjwY+NNhjMzS7kzWjf19OWxBjPJpoZxbUbLyxEj1Kr2wrqgSrc3b63abiUKEEi+XXx3gJ/KoTutq/k3f9ORzYmMe6cLVCsnLtiVrhiu6DN1N2QO5VOlvh+y0CIeVpxwbvTwuJYEpvuyjnCzpR0Ivjw56biHGR6uG/7w+jaEyUbDibnjKxDMXX/l2gisj+SNxjWNGZ0wnD5jVb59GBqR8MWK5OKmyPxZa1ZVV0OmN9gmAouGSio5EtoOlyRHj9EqU0PELaqJi+ZGKU5dHSdr7r6ezzV6rBqbyGqDdYFYgT4AfB9fQCrbAQ2r27BknnSE3rWcxaE1G3HsNc7nWcdM=
+  skip_cleanup: true
+  tag: $DIST_TAG
+  on:
+    branch: master
